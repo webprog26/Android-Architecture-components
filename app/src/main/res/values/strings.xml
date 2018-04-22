@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Android Architecture components</string>
+
+    <string name="hint_person_name">Person name</string>
+    <string name="hint_item_name">Item name</string>
+    <string name="add">Add</string>
 </resources>

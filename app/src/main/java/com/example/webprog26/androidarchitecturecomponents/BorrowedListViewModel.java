@@ -33,6 +33,10 @@ public class BorrowedListViewModel extends AndroidViewModel{
         new DeleteAsyncTask(appDatabase).execute(borrowModel);
     }
 
+    public void addItem(@NonNull final BorrowModel borrowModel) {
+        new AddAsyncTask(appDatabase).execute(borrowModel);
+    }
+
     private static class DeleteAsyncTask extends AsyncTask<BorrowModel, Void, Void> {
 
         private final AppDatabase appDatabase;
@@ -44,6 +48,21 @@ public class BorrowedListViewModel extends AndroidViewModel{
         @Override
         protected Void doInBackground(BorrowModel... borrowModels) {
             appDatabase.itemAndPersonModel().deleteBorrow(borrowModels[0]);
+            return null;
+        }
+    }
+
+    private static class AddAsyncTask extends AsyncTask<BorrowModel, Void, Void> {
+
+        private final AppDatabase appDatabase;
+
+        AddAsyncTask(AppDatabase appDatabase) {
+            this.appDatabase = appDatabase;
+        }
+
+        @Override
+        protected Void doInBackground(BorrowModel... borrowModels) {
+            appDatabase.itemAndPersonModel().addBorrow(borrowModels[0]);
             return null;
         }
     }
